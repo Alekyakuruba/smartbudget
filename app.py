@@ -3,8 +3,8 @@ import openai
 import os
 
 # Set your OpenAI API key here or via environment variable
-openai.api_key = os.getenv("OPENAI_API_KEY")
-
+#openai.api_key =
+client = openAI(api_key=st.secrets["OPENAI_API_KEY"])
 st.set_page_config(page_title="Smart Budget Advisor", page_icon="💸")
 
 st.title("💬 Smart Budget Advisor")
@@ -30,7 +30,7 @@ if user_prompt:
 
     # OpenAI Chat Completion
     try:
-        response = openai.ChatCompletion.create(
+        response = client.ChatCompletion.create(
             model="gpt-3.5-turbo",  # or "gpt-4" if you have access
             messages=st.session_state.messages
         )
